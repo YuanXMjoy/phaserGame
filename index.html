@@ -3,28 +3,24 @@
 <head>
   <meta charset="utf-8">
   <title>phaserGame</title>
-
+  <meta content="yes" name="apple-mobile-web-app-capable"/>
+  <meta content="yes" name="apple-touch-fullscreen"/>
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <meta charset="utf-8" />
   <!-- build:css main.min.css -->
   <link rel="stylesheet" href="css/main.css">
-  <!-- /build -->
-</head>
-
-<body>
-
-  <div id="phaserGame-game" class="game"></div>
-
-  <!-- build:remove -->
-  <script src="http://localhost:35729/livereload.js"></script>
   <!-- /build -->
 
   <!-- build:js phaser.min.js -->
   <script src="node_modules/phaser/build/phaser.min.js"></script>
   <!-- /build -->
 
-  <!-- build:js bundle.min.js -->
-  <script src="bundle.js"></script>
-  <!-- /build -->
+</head>
 
+<body>
+<div id="game" style="margin:0px"></div>
+<script src="src/game.js"></script>
 </body>
 </html>
 

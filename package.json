@@ -14,7 +14,10 @@
     "copy:phaser": "ncp node_modules/phaser/build/phaser.min.js build/phaser.min.js"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "name":"joyyuanxm",
+    "email": "joyyuanxm@foxmail.com"
+  },
   "license": "ISC",
   "dependencies": {
     "phaser": "^2.6.2"
