@@ -31,6 +31,7 @@ game.States.preload = function(){
     	game.load.audio('score_sound', 'assets/score.wav');//得分的音效
     	game.load.audio('hit_pipe_sound', 'assets/pipe-hit.wav'); //撞击管道的音效
     	game.load.audio('hit_ground_sound', 'assets/ouch.wav'); //撞击地面的音效
+        game.load.audio('background','assets/background.mp3');
 
     	game.load.image('ready_text','assets/get-ready.png');
     	game.load.image('play_tip','assets/instructions.png');
@@ -80,6 +81,7 @@ game.States.play = function(){
 		this.soundScore = game.add.sound('score_sound');
 		this.soundHitPipe = game.add.sound('hit_pipe_sound');
 		this.soundHitGround = game.add.sound('hit_ground_sound');
+		this.soundBgm=game.add.sound('background');
 		this.scoreText = game.add.bitmapText(game.world.centerX-20, 30, 'flappy_font', '0', 36);
 
 		this.readyText = game.add.image(game.width/2, 40, 'ready_text'); //get ready 文字
@@ -101,6 +103,7 @@ game.States.play = function(){
 	}
 
 	this.statrGame = function(){
+	    this.soundBgm.play();
 		this.gameSpeed = 200; //游戏速度
 		this.gameIsOver = false;
 		this.hasHitGround = false;
@@ -116,6 +119,7 @@ game.States.play = function(){
 	}
 
 	this.stopGame = function(){
+	    this.soundBgm.destroy();
 		this.bg.stopScroll();
 		this.ground.stopScroll();
 		this.pipeGroup.forEachExists(function(pipe){
