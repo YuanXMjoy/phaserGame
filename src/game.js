@@ -31,7 +31,7 @@ game.States.preload = function(){
     	game.load.audio('score_sound', 'assets/score.wav');//得分的音效
     	game.load.audio('hit_pipe_sound', 'assets/pipe-hit.wav'); //撞击管道的音效
     	game.load.audio('hit_ground_sound', 'assets/ouch.wav'); //撞击地面的音效
-
+		game.load.audio('background_sound','assets/background.mp3');
     	game.load.image('ready_text','assets/get-ready.png');
     	game.load.image('play_tip','assets/instructions.png');
     	game.load.image('game_over','assets/gameover.png');
@@ -75,12 +75,12 @@ game.States.play = function(){
 		this.bird.body.gravity.y = 0; //鸟的重力,未开始游戏，先先让他不动
 		game.physics.enable(this.ground,Phaser.Physics.ARCADE);//地面
 		this.ground.body.immovable = true; //固定不动
-
 		this.soundFly = game.add.sound('fly_sound');
 		this.soundScore = game.add.sound('score_sound');
 		this.soundHitPipe = game.add.sound('hit_pipe_sound');
 		this.soundHitGround = game.add.sound('hit_ground_sound');
-		this.scoreText = game.add.bitmapText(game.world.centerX-20, 30, 'flappy_font', '0', 36);
+        this.soundBackground=game.add.sound('background_sound');
+        this.scoreText = game.add.bitmapText(game.world.centerX-20, 30, 'flappy_font', '0', 36);
 
 		this.readyText = game.add.image(game.width/2, 40, 'ready_text'); //get ready 文字
 		this.playTip = game.add.image(game.width/2,300,'play_tip'); //提示点击
@@ -101,6 +101,7 @@ game.States.play = function(){
 	}
 
 	this.statrGame = function(){
+	    this.soundBackground.play();
 		this.gameSpeed = 200; //游戏速度
 		this.gameIsOver = false;
 		this.hasHitGround = false;
@@ -116,6 +117,7 @@ game.States.play = function(){
 	}
 
 	this.stopGame = function(){
+	    this.soundBackground.destroy();
 		this.bg.stopScroll();
 		this.ground.stopScroll();
 		this.pipeGroup.forEachExists(function(pipe){
